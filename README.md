@@ -11,6 +11,10 @@
 > Projeto feito usando Node + Typescript, sem frontend. Portanto, toda a interação com o usuário é via terminal.
 >
 > \*O debug está configurado e funcional para VScode: divirta-se!
+>
+---
+
+#### Ah, se curtiu, não esquece de deixar a :star:
 
 ---
 
