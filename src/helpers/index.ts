@@ -1,6 +1,6 @@
 'use strict'
 
-const emoji = require('node-emoji');
+const emoji = require('node-emoji')
 
 export class Helpers {
 
@@ -16,29 +16,29 @@ export class Helpers {
     }
 
     switch (type) {
-      case 'success':
-        if (step) printStep(step)
-        console.log(`\n ${emoji.emojify(':white_check_mark:')} ${msg} \n`)
+      case "success":
+        if (step) printStep(step);
+        console.info(`\n ${emoji.emojify(":white_check_mark:")} ${msg} \n`)
 
-        break
-      case 'error':
-        if (step) printStep(step)
-        console.error(`\n ${emoji.emojify(':warning:')}  ${msg} \n`)
+        break;
+      case "error":
+        if (step) printStep(step);
+        console.error(`\n ${emoji.emojify(":warning:")}  ${msg} \n`)
 
-        break
-      case 'promise':
-        if (step) printStep(step)
-        console.log(`\n ${emoji.emojify(':arrows_counterclockwise:')} ${msg} \n`)
+        break;
+      case "promise":
+        if (step) printStep(step);
+        console.info(`\n ${emoji.emojify(":aquarius:")} ${msg} \n`)
 
-        break
-      case 'end':
-        if (step) printStep(step)
-        console.log(`\n ${emoji.emojify(':black_square_for_stop:')}  ${msg} \n`)
+        break;
+      case "end":
+        if (step) printStep(step);
+        console.info(`\n ${emoji.emojify(":black_square_for_stop:")}  ${msg} \n`)
 
         break
       default:
-        if (step) printStep(step)
-        console.error(`\n ${emoji.emojify(':o2:')}  ${msg} \n`)
+        if (step) printStep(step);
+        console.info(`\n ${emoji.emojify(":o2:")}  ${msg} \n`)
 
         break
     }

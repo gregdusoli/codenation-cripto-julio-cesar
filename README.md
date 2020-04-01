@@ -1,12 +1,17 @@
 ## Para executar o projeto, faça:
+
 ```cmd
   $ cd [project_dir]
   $ npm intall
-  $ npm run dev
+  $ renomeie o arquivo .env.example para .env e informe sua API key
+  $ npm run build
+  $ npm run start
 ```
+
 > Projeto feito usando Node + Typescript, sem frontend. Portanto, toda a interação com o usuário é via terminal.
 >
-> *O debug está configurado e funcional para VScode
+> \*O debug está configurado e funcional para VScode: divirta-se!
+
 ---
 
 # Criptografia de Júlio César
@@ -46,7 +51,7 @@ No nosso caso os números e pontos serão mantidos, ou seja:
 Escrever programa, em qualquer linguagem de programação, que faça uma requisição
 HTTP para a url abaixo:
 
-```https://api.codenation.dev/v1/challenge/dev-ps/generate-data?token=SEU_TOKEN```
+`https://api.codenation.dev/v1/challenge/dev-ps/generate-data?token=SEU_TOKEN`
 
 Para encontrar o seu token , acesse a plataforma Codenation, faça o login e a informação
 estará na tela, conforme no exemplo abaixo:
@@ -76,7 +81,7 @@ o resumo sha1 do texto decifrado.
 
 Seu programa deve submeter o arquivo atualizado para correção via POST para a API:
 
-```https://api.codenation.dev/v1/challenge/dev-ps/submit-solution?token=SEU_TOKEN```
+`https://api.codenation.dev/v1/challenge/dev-ps/submit-solution?token=SEU_TOKEN`
 
 **OBS:** a API espera um arquivo sendo enviado como multipart/form-data, como se
 fosse enviado por um formulário HTML, com um campo do tipo file com o nome answer.

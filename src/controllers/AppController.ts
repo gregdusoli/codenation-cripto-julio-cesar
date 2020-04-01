@@ -45,13 +45,13 @@ export class App {
 
       const headers = formData.getHeaders()
 
-      const data = await axios
-        .post(`${api.base_url}/submit-solution?token=${api.token}`,
+      const { data } = await axios.post(
+        `${api.base_url}/submit-solution?token=${api.token}`,
           formData,
           { headers }
         )
 
-        return data
+      return data
     } catch (err) {
       throw new Error(err.message)
     }
@@ -93,12 +93,24 @@ export class App {
 
   async step1(): Promise<boolean> {
     try {
-      Helpers.msgLog('promise', `Solicitando desafio à Codenation (${this.endpoint})...`, 1)
+      Helpers.msgLog(
+        "promise",
+        `Solicitando desafio à Codenation (${this.endpoint})...`,
+        1
+      );
 
       this.temp = await this.getChallenge()
       this.getChallengeResult = await this.temp
 
-      if (this.getChallengeResult) Helpers.msgLog('success', `desafio obtido com sucesso:\n ${JSON.stringify(this.getChallengeResult, null, 2)}`)
+      if (this.getChallengeResult)
+        Helpers.msgLog(
+          "success",
+          `desafio obtido com sucesso:\n ${JSON.stringify(
+            this.getChallengeResult,
+            null,
+            2
+          )}`
+        )
 
       return Promise.resolve(true)
     } catch (err) {
@@ -113,7 +125,8 @@ export class App {
       this.temp = await this.writeFile(this.getChallengeResult)
       this.writeFileResult = await this.temp
 
-      if (this.writeFileResult) Helpers.msgLog('success', 'desafio salvo com sucesso no arquivo JSON')
+      if (this.writeFileResult)
+        Helpers.msgLog("success", "desafio salvo com sucesso no arquivo JSON")
 
       return Promise.resolve(true)
     } catch (err) {
@@ -128,7 +141,11 @@ export class App {
       this.temp = await Helpers.decryptMessage(this.getChallengeResult.cifrado, this.getChallengeResult.numero_casas)
       this.decryptMessageResult = await this.temp
 
-      if (this.decryptMessageResult) Helpers.msgLog('success', `mensagem descriptografada com sucesso:\n ${this.decryptMessageResult}`)
+      if (this.decryptMessageResult)
+        Helpers.msgLog(
+          "success",
+          `mensagem descriptografada com sucesso:\n ${this.decryptMessageResult}`
+        )
 
       return Promise.resolve(true)
     } catch (err) {
@@ -143,7 +160,11 @@ export class App {
       this.temp = await Helpers.generateCryptoResume(this.decryptMessageResult)
       this.generateCryptoResumeResult = await this.temp
 
-      if (this.generateCryptoResumeResult) Helpers.msgLog('success', `resumo criptográfico gerado com sucesso:\n ${this.generateCryptoResumeResult}`)
+      if (this.generateCryptoResumeResult)
+        Helpers.msgLog(
+          "success",
+          `resumo criptográfico gerado com sucesso:\n ${this.generateCryptoResumeResult}`
+        )
 
       return Promise.resolve(true)
     } catch (err) {
@@ -158,7 +179,15 @@ export class App {
       this.temp = await this.updateFile(this.getChallengeResult, this.decryptMessageResult, this.generateCryptoResumeResult)
       this.updateFileResult = await this.temp
 
-      if (this.updateFileResult) Helpers.msgLog('success', `arquivo atualizado com sucesso: ${JSON.stringify(this.updateFileResult, null, 2)}\n`)
+      if (this.updateFileResult)
+        Helpers.msgLog(
+          "success",
+          `arquivo atualizado com sucesso:\n ${JSON.stringify(
+            this.updateFileResult,
+            null,
+            2
+          )}`
+        )
 
       return Promise.resolve(true)
     } catch (err) {
@@ -173,7 +202,13 @@ export class App {
       this.temp = await this.postChallenge()
       this.postChallengeResult = await this.temp
 
-      if (this.postChallengeResult) Helpers.msgLog('success', `resposta do envio à Codenation: ${this.postChallengeResult}\n`)
+      if (this.postChallengeResult)
+        Helpers.msgLog(
+          "success",
+          `resposta do envio à Codenation: ${JSON.stringify(
+            this.postChallengeResult
+          )}`
+        )
 
       return Promise.resolve(true)
     } catch (err) {
@@ -198,5 +233,4 @@ export class App {
       throw new Error(Helpers.msgLog('error', `não foi possível solucionar o desafio, verifique os erros no log: ${err.message}`, 9))
     }
   }
-
 }
