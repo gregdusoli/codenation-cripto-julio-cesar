@@ -45,11 +45,13 @@ export class App {
 
       const headers = formData.getHeaders()
 
-      return await axios
+      const data = await axios
         .post(`${api.base_url}/submit-solution?token=${api.token}`,
           formData,
           { headers }
         )
+
+        return data
     } catch (err) {
       throw new Error(err.message)
     }
