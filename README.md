@@ -1,4 +1,4 @@
-## Desafios Codenation
+## Codenation - Acelerações - Processos Seletivos - Desafios
 ---
 Neste repo está o código de cada desafio para processos seletivos de acelerações que participei (ou não).
 
